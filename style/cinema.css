@@ -1,0 +1,89 @@
+@import url("./main.css");
+
+i.bi-star-fill {
+  color: var(--clr-gold);
+}
+
+/* /////////////////////////
+    CINEMA BANNER
+///////////////////////// */
+
+.cinema-banner {
+  display: flex;
+  gap: 1.6rem;
+  background-color: var(--clr-grey-bg-light);
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+  max-width: 88rem;
+  border: 2px solid var(--clr-black-light);
+}
+
+.cinema-banner .banner-contents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.cinema-banner .banner-contents > * {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.cinema-banner .poster {
+  max-width: 12rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.cinema-banner div:has(> .badge.transparent) {
+  flex-wrap: wrap;
+  flex-direction: auto;
+}
+
+.cinema-banner .btn-box,
+.cinema-banner .btn-box div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.cinema-banner .btn-box {
+    width: 100%;
+}
+
+.banner-swiper .swiper-slide {
+  width: fit-content !important;
+}
+
+@media (min-width: 1024px) {
+  .cinema-banner {
+    gap: 2.4rem;
+    padding: 2.4rem;
+  }
+
+  .cinema-banner .poster {
+    max-width: 22rem;
+  }
+
+  .cinema-banner .banner-contents {
+    flex-direction: row;
+  }
+
+  .cinema-banner .banner-contents > * {
+    gap: 1.6rem;
+  }
+
+  .cinema-banner .banner-contents > *:last-of-type {
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: -100%;
+  }
+
+  .rating {
+    font-size: var(--fs-600);
+  }
+}

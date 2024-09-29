@@ -90,6 +90,7 @@ UTILITY CLASSES
   border-top: 1px solid var(--clr-grey-divider);
   width: 100%;
   flex: 1;
+  max-height: 0.1rem;
 }
 
 .divider.dotted {
@@ -134,6 +135,11 @@ UTILITY CLASSES
   max-width: 24rem;
   overflow: hidden;
   text-wrap: nowrap;
+}
+
+.badge.transparent {
+  background-color: var(--clr-grey-hover);
+  color: var(--clr-grey-text);
 }
 
 .badge.hidden {
@@ -429,9 +435,26 @@ main {
 
 main .main-content {
   height: 100vh;
-  padding: 1.6rem;
+  padding-top: 1.6rem;
   padding-bottom: 12rem;
   overflow: hidden auto;
+}
+
+main .main-content::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--clr-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary-light);
+  border-radius: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--clr-primary);
 }
 
 /* /////////////////////////
@@ -750,7 +773,6 @@ nav footer .fs-200 {
 main header {
   padding: 0.8rem 1.6rem;
   padding-bottom: 0.4rem;
-  padding-left: 6.4rem;
   min-height: 4.05rem;
   justify-content: space-between;
   flex-wrap: wrap;

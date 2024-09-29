@@ -29,14 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   pictureLogoList?.forEach((logo) => {
     let img = this.createElement("img");
-    let type = ``;
-    if (logo.getAttribute("data-white")) {
-      type = "-white";
-    } else if (logo.getAttribute("data-black")) {
-      type = "-black";
-    }
 
-    img.src = `/static/assets/logo/logo${type}.svg`;
+    img.src = `assets/logo/logo.svg`;
     switch (logo.getAttribute("data-size")) {
       default:
       case UI_SIZE.xs:
@@ -59,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (logo.getAttribute("data-name")) {
       let logoName = this.createElement("p");
-      logoName.innerHTML = `Pharmify`;
+      logoName.innerHTML = `CineForest`;
       logo.appendChild(logoName);
     }
     logo.appendChild(img);

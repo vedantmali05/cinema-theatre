@@ -11,6 +11,7 @@ button a {
   gap: 0.4rem;
   min-width: fit-content;
   padding: 0.8rem 1.6rem;
+  color: inherit;
 }
 
 button:has(a) {
@@ -125,7 +126,7 @@ button.ghost {
 button.text {
   padding: 0.4rem;
   width: fit-content;
-  color: var(--clr-accent);
+  color: var(--clr-primary);
 }
 
 button.text:has(a) {
@@ -148,22 +149,23 @@ button.text:hover {
 
 button.ghost:active,
 button.text:active {
-  background-color: var(--clr-accent-hover);
+  background-color: var(--clr-primary-hover);
 }
 
 button.icon {
   border-radius: 100% !important;
-  --size: 3.2rem;
+  --size: 4.8rem;
   width: var(--size);
   min-width: var(--size);
   height: var(--size);
   min-height: var(--size);
   aspect-ratio: 1;
   padding: 0;
+  font-size: var(--fs-600);
 }
 
 button.icon:hover {
-  background-color: var(--clr-accent-hover);
+  background-color: var(--clr-grey-hover);
 }
 
 /* Negative Buttons */
@@ -187,7 +189,7 @@ button.ghost.negative {
 
 button.icon:active {
   scale: 0.9;
-  background-color: var(--clr-accent-focus);
+  background-color: var(--clr-black);
 }
 
 /* Mini Buttons */
