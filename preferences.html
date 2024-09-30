@@ -15,6 +15,157 @@
 
 <body>
 
+    <main>
+        <section class="main-content">
+
+            <button class="text" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
+                            class="bi bi-arrow-left"></i>
+                        Back</span></a></button>
+
+            <section class="movie-info">
+                <picture class="poster desk-only">
+                    <img src="./db/posters/joker.jpg" alt="Joker Poster">
+                </picture>
+                <h1 class="fs-600">Joker: The Last Dance</h1>
+                <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
+                    <span>2 Hrs 30 Mins</span>
+                    <span class="badge">2D</span>
+                </p>
+
+            </section>
+
+            <div class="divider mobile-only"></div>
+
+            <form action="" method="post" class="movie-form" novalidate>
+                <h2 class="fs-400">Select Show Preferences</h2>
+                <div>
+
+                    <p class="note info">
+                        <i class="bi bi-info-circle"></i>
+                        $ Seats available
+                    </p>
+
+                    <fieldset>
+                        <label for="seats_count">Number of Seats</label>
+                        <div class="icon-frame">
+                            <input type="text" required class="text-input product-quantity" value="1" min="1"
+                                name="seats_count" id="seats_count" placeholder="00"
+                                data-error-msg="Quantity must be more than 0 and a whole number.">
+                            <span class="trail">
+                                <button class="icon increment-btn" type="button"><i class="bi bi-plus"></i></button>
+                            </span>
+                            <span class="lead">
+                                <button class="icon decrement-btn" type="button"><i class="bi bi-dash"></i></button>
+                            </span>
+                        </div>
+                    </fieldset>
+
+
+                    <div class="total-price">
+                        <p class="subtitle">₹220 <span class="icon"><i class="bi bi-x"></i></span> 10 =</p></span>
+                        <p class="fs-600">₹ 2,200</p>
+                    </div>
+
+
+
+                    <fieldset>
+                        <label>Show Dates</label>
+
+                        <div class="check-radio-box show-dates">
+                            <label for="show_date_1">
+                                <input type="radio" name="show_date" id="show_date_1" required>
+                                <span>
+                                    01 Oct,
+                                    <span class="year">2024</span>
+                                </span>
+                            </label>
+
+                            <label for="show_date_2">
+                                <input type="radio" name="show_date" id="show_date_2" required>
+                                <span>
+                                    01 Oct,
+                                    <span class="year">2024</span>
+                                </span>
+                            </label>
+
+                            <label for="show_date_3">
+                                <input type="radio" name="show_date" id="show_date_3" required>
+                                <span>
+                                    01 Oct,
+                                    <span class="year">2024</span>
+                                </span>
+                            </label>
+
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>Show Time</label>
+
+                        <div class="check-radio-box show-times">
+                            <label for="show_time_1">
+                                <input type="radio" name="show_time" id="show_time_1" required>
+                                <span>11:30 <span class="part-of-day">AM</span></span>
+                            </label>
+
+                            <label for="show_time_2">
+                                <input type="radio" name="show_time" id="show_time_2" required>
+                                <span>03:30 <span class="part-of-day">PM</span></span>
+                            </label>
+
+                            <label for="show_time_3">
+                                <input type="radio" name="show_time" id="show_time_3" required>
+                                <span>06:00 <span class="part-of-day">PM</span></span>
+                            </label>
+
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <div>
+                    <fieldset>
+                        <label>Movie Language</label>
+
+                        <div class="check-radio-box">
+                            <label for="movie_language_1">
+                                <input type="radio" name="movie_language" id="movie_language_1" required>
+                                English
+                            </label>
+
+                            <label for="movie_language_2">
+                                <input type="radio" name="movie_language" id="movie_language_2" required>
+                                Hindi
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>City or Locations</label>
+
+                        <div class="check-radio-box">
+                            <label for="location_1">
+                                <input type="radio" name="location" id="location_1" required>
+                                Gopal Nagar, Amravati
+                            </label>
+
+                            <label for="location_2">
+                                <input type="radio" name="location" id="location_2" required>
+                                Panchavati, Amravati
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <button class="primary">
+                    Select Seats
+                    <span class="icon"><i class="bi bi-arrow-right"></i></span>
+                </button>
+
+            </form>
+
+        </section>
+    </main>
 
 
 

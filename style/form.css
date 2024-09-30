@@ -144,7 +144,7 @@ p button.text {
 
 button.ghost:hover,
 button.text:hover {
-  background-color: var(--clr-grey-bg);
+  background-color: var(--clr-grey-bg-light);
 }
 
 button.ghost:active,
@@ -170,7 +170,7 @@ button.icon:hover {
 
 /* Negative Buttons */
 :is(button.primary, button.fab).negative {
-  background: var(--clr-status-negative-light-text) !important;
+  background: var(--clr-status-negative-dark-text) !important;
 }
 
 :is(button.primary, button.fab).negative::before {
@@ -178,18 +178,18 @@ button.icon:hover {
 }
 
 button.ghost.negative {
-  border-color: var(--clr-status-info-light-text);
+  border-color: var(--clr-status-info-dark-text);
 }
 
 button.text.negative,
 button.icon.negative,
 button.ghost.negative {
-  color: var(--clr-status-negative-light-text);
+  color: var(--clr-status-negative-dark-text);
 }
 
 button.icon:active {
   scale: 0.9;
-  background-color: var(--clr-black);
+  background-color: var(--clr-black-light);
 }
 
 /* Mini Buttons */
@@ -377,9 +377,9 @@ fieldset label {
   margin-left: 0.8rem;
   z-index: 11;
   font-size: var(--fs-200);
-  color: var(--clr-grey-text);
+  color: var(--clr-white);
   width: fit-content;
-  background-color: var(--clr-white);
+  background-color: var(--clr-grey-bg-light);
   padding: 0 0.4rem;
   border-radius: 0.4rem;
   max-width: 100%;
@@ -389,7 +389,7 @@ fieldset:has(.check-radio-box) label {
   margin-bottom: 0;
 }
 
-fieldset:has(.text-input:hover, .text-input:focus) label {
+fieldset:has(.text-input:hover) label {
   color: var(--clr-accent);
 }
 
@@ -397,10 +397,11 @@ fieldset .text-input,
 fieldset .icon-frame {
   outline: none;
   border: none;
-  font-size: var(--fs-400);
+  font-size: var(--fs-500);
   border-radius: 0.4rem;
   border: 1px solid var(--clr-grey-divider);
-  background-color: var(--clr-white);
+  background-color: var(--clr-grey-bg-light);
+  color: var(--clr-white);
 }
 
 fieldset .text-input {
@@ -409,16 +410,14 @@ fieldset .text-input {
 }
 
 fieldset .text-input:hover,
-fieldset .icon-frame:has(.text-input:hover),
-fieldset .text-input:focus,
-fieldset .icon-frame:has(.text-input:focus) {
+fieldset .icon-frame:has(.text-input:hover) {
   border-color: var(--clr-grey-text);
   background-color: var(--clr-grey-bg-light);
 }
 
 fieldset .text-input:focus,
-fieldset .icon-frame:focus {
-  border-color: var(--clr-black);
+fieldset .icon-frame:has(.text-input:focus) {
+  border-color: var(--clr-primary);
 }
 
 fieldset textarea {
@@ -492,9 +491,6 @@ fieldset .icon-frame .trail {
   padding-right: 0.8rem;
 }
 
-fieldset .icon-frame button.icon:hover {
-  background-color: var(--clr-primary-focus);
-}
 
 fieldset .icon-frame .text-input {
   order: 2;
@@ -538,6 +534,7 @@ RADIO AND CHECKBOX
 }
 
 .check-radio-box label {
+  background-color: transparent;
   gap: 0.8rem !important;
   font-size: var(--fs-400);
   color: var(--clr-text-black);
@@ -550,8 +547,7 @@ RADIO AND CHECKBOX
 }
 
 .check-radio-box label:has(input:hover) {
-  color: var(--clr-black) !important;
-  background-color: var(--clr-primary-hover);
+  background-color: var(--clr-grey-bg-light);
 }
 .check-radio-box input {
   appearance: none;
@@ -582,7 +578,7 @@ RADIO AND CHECKBOX
 
 .check-radio-box input[type="radio"]:checked {
   box-shadow: inset 0 0 0 3px var(--clr-primary-dark),
-    inset 0 0 0 6px var(--clr-white), inset 0 0 0 10px var(--clr-primary-dark);
+    inset 0 0 0 6px var(--clr-grey-bg), inset 0 0 0 10px var(--clr-primary-light);
 }
 
 /* CUSTOM INPUTS */
@@ -621,26 +617,26 @@ RADIO AND CHECKBOX
 fieldset .msg.error,
 .note.error,
 .snackbar.error {
-  --clr-status: var(--clr-status-negative-light-text);
-  --clr-status-bg: var(--clr-status-negative-light-bg);
+  --clr-status: var(--clr-status-negative-dark-text);
+  --clr-status-bg: var(--clr-status-negative-dark-bg);
 }
 
 fieldset .msg.success,
 .note.success {
-  --clr-status: var(--clr-status-success-light-text);
-  --clr-status-bg: var(--clr-status-success-light-bg);
+  --clr-status: var(--clr-status-success-dark-text);
+  --clr-status-bg: var(--clr-status-success-dark-bg);
 }
 
 fieldset .msg.info,
 .note.info {
-  --clr-status: var(--clr-status-info-light-text);
-  --clr-status-bg: var(--clr-status-info-light-bg);
+  --clr-status: var(--clr-status-info-dark-text);
+  --clr-status-bg: var(--clr-status-info-dark-bg);
 }
 
 fieldset .msg.warn,
 .note.warn {
-  --clr-status: var(--clr-status-warn-light-text);
-  --clr-status-bg: var(--clr-status-warn-light-bg);
+  --clr-status: var(--clr-status-warn-dark-text);
+  --clr-status-bg: var(--clr-status-warn-dark-bg);
 }
 
 .note {

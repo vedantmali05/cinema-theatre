@@ -32,7 +32,8 @@ i.bi-star-fill {
   width: 100%;
 }
 
-.cinema-banner .poster {
+.cinema-banner .poster,
+.movie-info .poster {
   max-width: 12rem;
   border-radius: 0.8rem;
   overflow: hidden;
@@ -51,7 +52,7 @@ i.bi-star-fill {
 }
 
 .cinema-banner .btn-box {
-    width: 100%;
+  width: 100%;
 }
 
 .banner-swiper .swiper-slide {
@@ -64,7 +65,8 @@ i.bi-star-fill {
     padding: 2.4rem;
   }
 
-  .cinema-banner .poster {
+  .cinema-banner .poster,
+  .movie-info .poster {
     max-width: 22rem;
   }
 
@@ -85,5 +87,96 @@ i.bi-star-fill {
 
   .rating {
     font-size: var(--fs-600);
+  }
+}
+
+/* /////////////////////////
+  PREFERENCES PAGE
+///////////////////////// */
+
+.movie-info,
+.movie-form {
+  padding: 1.6rem;
+  padding-top: 0.8rem;
+}
+
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.movie-info h1 {
+  width: fit-content;
+}
+
+.movie-form > * {
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 2.4rem;
+}
+
+.movie-form .total-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+#seats_count {
+  text-align: center;
+  font-size: var(--fs-600);
+}
+
+fieldset:has(#seats_count) .icon-frame {
+  height: 6.4rem;
+}
+
+fieldset :is(.show-dates, .show-times) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.8rem;
+}
+
+fieldset :is(.show-dates, .show-times) label {
+  margin-top: 1.6rem;
+  padding: 1.6rem;
+  background-color: var(--clr-grey-bg-light);
+  font-size: var(--fs-600);
+  align-items: start;
+  position: relative;
+  overflow: visible !important;
+  border: 2px solid transparent;
+  border-radius: 0.8rem;
+}
+
+fieldset :is(.show-dates) label:has(input:checked) {
+  border-color: var(--clr-primary);
+}
+
+fieldset :is(.show-times) label:has(input:checked) {
+  border-color: var(--clr-accent);
+}
+
+fieldset :is(.show-dates, .show-times) label > span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset :is(.show-dates, .show-times) label :is(.year, .part-of-day) {
+  font-size: var(--fs-400);
+  color: var(--clr-grey-text);
+}
+
+fieldset :is(.show-dates, .show-times) input {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  background-color: var(--clr-grey-bg-light) !important;
+}
+
+@media (min-width: 1024px) {
+  .main-content:has(.movie-info) {
+    display: flex;
   }
 }

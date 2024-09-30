@@ -78,20 +78,12 @@ export function setTitleAttr() {
 
 // Set Icons to Respective Messages - Notes, Snackbars and Input Messages
 export function setMsgIcons(elem, iconName) {
-  if (elem.querySelector(".icon")) return;
+  if (elem.querySelector(".bi")) return;
   if (!elem) return;
-  let icon = document.createElement("span");
-  icon.className = "icon";
-  icon.innerHTML = getIconFromSprite(iconName);
+  let icon = document.createElement("i");
+  icon.classList.add("bi", "bi-" + iconName)
   elem.prepend(icon);
 }
-
-// Get SVG SPRITE FILE ICONS PATH
-export function getIconFromSprite(iconName) {
-  return `<svg class="icon"><use href="/static/assets/icon-sprite.svg#${iconName}"/></svg>`
-}
-
-
 
 /* ///////////////
 DATA STORAGE FUNCTIONS

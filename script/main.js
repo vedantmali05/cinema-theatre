@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   infoElemsList?.forEach((elem) => {
-    setMsgIcons(elem, UI_CLASS.info);
+    setMsgIcons(elem, "info-circle");
   });
   successElemsList?.forEach((elem) => {
     setMsgIcons(elem, UI_CLASS.success);
