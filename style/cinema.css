@@ -328,3 +328,80 @@ fieldset :is(.show-dates, .show-times) input {
     gap: 0;
   }
 }
+
+.cvv-expiry {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.main-content:has(.ticket):not(:has(.movie-form)) {
+  padding: 1.6rem;
+}
+
+.main-content:has(.ticket):not(:has(.movie-form)) > * {
+  width: 100%;
+  max-width: 35rem;
+  margin: auto;
+}
+
+.ticket {
+  border: 1px solid var(--clr-grey-divider);
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.main-content:has(.movie-info) .ticket {
+  gap: 0;
+}
+
+.ticket .header-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.6rem;
+}
+
+.ticket .movie-details {
+  text-align: center;
+}
+
+.ticket table {
+  width: 100%;
+}
+
+.ticket td {
+  padding: 0.4rem;
+  align-content: start;
+  text-align: start;
+}
+
+.ticket td:first-of-type {
+  text-wrap: nowrap;
+  text-align: right;
+  color: var(--clr-grey-text);
+  font-size: var(--fs-300);
+}
+
+.ticket td:last-of-type {
+  width: 100%;
+}
+
+.barcode {
+  background-color: var(--clr-white);
+  padding: 1.6rem;
+  border-radius: 1.6rem;
+}
+
+.barcode img {
+  max-width: 80%;
+  margin: auto;
+}
+
+.main-content:has(.ticket) .btn-box {
+  margin-top: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+}
