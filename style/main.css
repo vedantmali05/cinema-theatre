@@ -440,8 +440,9 @@ main .main-content {
   overflow: hidden auto;
 }
 
-main .main-content::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0.4rem;
+  height: 0.4rem;
 }
 
 ::-webkit-scrollbar-track {

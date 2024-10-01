@@ -16,13 +16,18 @@
 <body>
 
     <main>
-        <section class="main-content">
+        <section class="main-content main-preferences">
 
-            <button class="text" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
+            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
                             class="bi bi-arrow-left"></i>
                         Back</span></a></button>
 
             <section class="movie-info">
+                <div style="width: 100%;">
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="index.html"><span
+                                class="icon"><i class="bi bi-arrow-left"></i>
+                                Back</span></a></button>
+                </div>
                 <picture class="poster desk-only">
                     <img src="./db/posters/joker.jpg" alt="Joker Poster">
                 </picture>
@@ -39,34 +44,6 @@
             <form action="" method="post" class="movie-form" novalidate>
                 <h2 class="fs-400">Select Show Preferences</h2>
                 <div>
-
-                    <p class="note info">
-                        <i class="bi bi-info-circle"></i>
-                        $ Seats available
-                    </p>
-
-                    <fieldset>
-                        <label for="seats_count">Number of Seats</label>
-                        <div class="icon-frame">
-                            <input type="text" required class="text-input product-quantity" value="1" min="1"
-                                name="seats_count" id="seats_count" placeholder="00"
-                                data-error-msg="Quantity must be more than 0 and a whole number.">
-                            <span class="trail">
-                                <button class="icon increment-btn" type="button"><i class="bi bi-plus"></i></button>
-                            </span>
-                            <span class="lead">
-                                <button class="icon decrement-btn" type="button"><i class="bi bi-dash"></i></button>
-                            </span>
-                        </div>
-                    </fieldset>
-
-
-                    <div class="total-price">
-                        <p class="subtitle">₹220 <span class="icon"><i class="bi bi-x"></i></span> 10 =</p></span>
-                        <p class="fs-600">₹ 2,200</p>
-                    </div>
-
-
 
                     <fieldset>
                         <label>Show Dates</label>
@@ -121,6 +98,8 @@
                         </div>
                     </fieldset>
 
+                    <div class="divider"></div>
+
                 </div>
 
                 <div>
@@ -155,12 +134,16 @@
                             </label>
                         </div>
                     </fieldset>
+
+
                 </div>
 
-                <button class="primary">
-                    Select Seats
-                    <span class="icon"><i class="bi bi-arrow-right"></i></span>
-                </button>
+                <div class="btn-box">
+                    <button class="primary">
+                        Select Seats
+                        <span class="icon"><i class="bi bi-arrow-right"></i></span>
+                    </button>
+                </div>
 
             </form>
 

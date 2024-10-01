@@ -66,6 +66,7 @@ button:has(.loader.spinner):disabled > *:not(:last-child) {
   background: var(--gradient-primary);
   color: var(--clr-white);
   max-width: 35.2rem;
+  gap: 0.8rem;
 }
 
 :is(button.primary, button.fab)::before {
@@ -491,7 +492,6 @@ fieldset .icon-frame .trail {
   padding-right: 0.8rem;
 }
 
-
 fieldset .icon-frame .text-input {
   order: 2;
   border: none;
@@ -578,7 +578,8 @@ RADIO AND CHECKBOX
 
 .check-radio-box input[type="radio"]:checked {
   box-shadow: inset 0 0 0 3px var(--clr-primary-dark),
-    inset 0 0 0 6px var(--clr-grey-bg), inset 0 0 0 10px var(--clr-primary-light);
+    inset 0 0 0 6px var(--clr-grey-bg),
+    inset 0 0 0 10px var(--clr-primary-light);
 }
 
 /* CUSTOM INPUTS */
