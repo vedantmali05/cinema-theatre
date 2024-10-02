@@ -95,9 +95,6 @@ export function saveToStorage(key, data) {
     if (!key || typeof key !== "string") {
       throw new Error("Invalid key: Key must be a non-empty string.");
     }
-
-    data = data.filter(item => item !== null);
-
     const serializedData = JSON.stringify(data);
     localStorage.setItem(key, serializedData);
 

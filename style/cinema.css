@@ -40,7 +40,7 @@ i.bi-star-fill {
 }
 
 .cinema-banner .description {
-  max-height: 4rem;
+  max-height: 3.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -129,6 +129,11 @@ i.bi-star-fill {
   margin-top: 2.4rem;
 }
 
+.main-content.main-preferences .movie-form > * {
+  max-width: 80rem;
+  margin-left: 0;
+}
+
 .movie-form.seats-sec > * {
   max-width: 100%;
 }
@@ -154,20 +159,21 @@ i.bi-star-fill {
 
 fieldset :is(.show-dates, .show-times) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1.6rem;
 }
 
 fieldset :is(.show-dates, .show-times) label {
   margin-top: 1.6rem;
   padding: 1.6rem;
   background-color: var(--clr-grey-bg-light);
-  font-size: var(--fs-600);
+  font-size: var(--fs-400);
   align-items: start;
   position: relative;
   overflow: visible !important;
   border: 2px solid transparent;
   border-radius: 0.8rem;
+  width: 100%;
 }
 
 fieldset :is(.show-dates) label:has(input:checked) {
@@ -178,7 +184,7 @@ fieldset :is(.show-times) label:has(input:checked) {
   border-color: var(--clr-accent);
 }
 
-fieldset :is(.show-dates, .show-times) label > span {
+fieldset :is(.show-dates) label > span {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,7 +192,7 @@ fieldset :is(.show-dates, .show-times) label > span {
 }
 
 fieldset :is(.show-dates, .show-times) label :is(.year, .part-of-day) {
-  font-size: var(--fs-400);
+  font-size: var(--fs-200);
   color: var(--clr-grey-text);
 }
 
@@ -226,10 +232,6 @@ fieldset :is(.show-dates, .show-times) input {
 
   .movie-form {
     overflow: hidden auto;
-  }
-
-  button.primary {
-    max-width: 100%;
   }
 }
 
@@ -325,6 +327,7 @@ fieldset :is(.show-dates, .show-times) input {
 }
 
 @media (min-width: 425px) {
+  .btn-box button.primary,
   .seats-sec button.primary {
     max-width: 35rem;
     margin-left: auto;
