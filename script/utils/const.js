@@ -109,3 +109,53 @@ export const UI_REGIONS = {
 export const DATE_WEEK_DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const DATE_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 export const DATE_MONTHS_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+/* ///////////////
+    CINEMA DATA
+/////////////// */
+
+export const MovieList = [
+    {
+        image: "joker-folie-à-deux.webp",
+        directors: ["Todd Phillips"],
+        name: "Joker: Folie à Deux",
+        rating: 6.1,
+        ratingCategory: "R",
+        genre: ["Psychological Thriller", "Musical", "Crime", "Drama"],
+        description: "Arthur Fleck is institutionalized at Arkham, awaiting trial for his crimes as Joker. While struggling with his dual identity, Arthur not only stumbles upon true love, but also finds the music that's always been inside him.",
+        availableFrom: "04/10/2024",
+        availableTo: "01/11/2024",
+        timings: ["12:00", "15:30", "18:00", "22:00"],
+        availableLocations: ["CineForest Cinemas, Amravati", "Cineforest Cinemas, Nagpur", "Cineforest Cinemas, Ulhasnagar, Mumbai", "Cineforest Cinemas, Pune"],
+        availableScreens: ["1", "2", "1", "3"],
+        releaseDate: "04/10/2024",
+        duration: "02:18",
+        language: ["English", "Hindi"],
+        cast: ["Joaquin Phoenix", "Zazie Beetz", "Lady Gaga"],
+        trailer: "https://youtube.com/watch?v=_OKAwz2MsJs",
+        price: 215,
+        dimensional: "2D",
+    },
+    {
+        image: "joker-folie-à-deux.webp",
+        directors: ["Todd Phillips"],
+        name: "Joker: Folie à Deux",
+        rating: 6.1,
+        ratingCategory: "R",
+        genre: ["Psychological Thriller", "Musical", "Crime", "Drama"],
+        description: "Arthur Fleck is institutionalized at Arkham, awaiting trial for his crimes as Joker. While struggling with his dual identity, Arthur not only stumbles upon true love, but also finds the music that's always been inside him.",
+        availableFrom: "04/10/2024",
+        availableTo: "01/11/2024",
+        timings: ["12:00", "15:30", "18:00", "22:00"],
+        availableLocations: ["CineForest Cinemas, Amravati", "Cineforest Cinemas, Nagpur", "Cineforest Cinemas, Ulhasnagar, Mumbai", "Cineforest Cinemas, Pune"],
+        availableScreens: ["1", "2", "1", "3"],
+        releaseDate: "04/10/2024",
+        duration: "02:18",
+        language: ["English", "Hindi"],
+        cast: ["Joaquin Phoenix", "Zazie Beetz", "Lady Gaga"],
+        trailer: "https://youtube.com/watch?v=_OKAwz2MsJs",
+        price: 215,
+        dimensional: "2D",
+    }
+]
