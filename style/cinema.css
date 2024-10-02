@@ -39,13 +39,18 @@ i.bi-star-fill {
   overflow: hidden;
 }
 
+.cinema-banner .description {
+  max-height: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .cinema-banner div:has(> .badge.transparent) {
   flex-wrap: wrap;
   flex-direction: auto;
 }
 
-.cinema-banner .btn-box,
-.cinema-banner .btn-box div {
+.cinema-banner .btn-box {
   display: flex;
   justify-content: space-between;
   gap: 2.4rem;
