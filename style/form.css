@@ -42,15 +42,10 @@ button:focus-visible {
 button:disabled,
 fieldset input:disabled,
 fieldset label:has(input:disabled),
-.check-radio-box:has(input:disabled) *,
 *[aria-disabled="true"] {
   opacity: 0.5;
   pointer-events: none;
   user-select: none;
-}
-
-button.primary:disabled {
-  opacity: 1;
 }
 
 button.primary:disabled::before {
@@ -398,7 +393,7 @@ fieldset .text-input,
 fieldset .icon-frame {
   outline: none;
   border: none;
-  font-size: var(--fs-500);
+  font-size: var(--fs-400);
   border-radius: 0.4rem;
   border: 1px solid var(--clr-grey-divider);
   background-color: var(--clr-grey-bg-light);

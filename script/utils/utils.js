@@ -159,7 +159,7 @@ export function formatINR(num, isCurrency = true) {
   integerPart = integerPart.replace(/(\d)(?=(\d\d)+\d$)/g, "$1,");
   // Join the Integer + Decimal part if it exists
   num = decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
-  return isCurrency ? "₹ " + num : num;
+  return isCurrency ? "₹" + num : num;
 }
 
 

@@ -24,21 +24,21 @@
 
             <section class="movie-info">
                 <div style="width: 100%;">
-                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="index.html"><span
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="preferences.html"><span
                                 class="icon"><i class="bi bi-arrow-left"></i>
                                 Back</span></a></button>
                 </div>
                 <picture class="poster desk-only">
-                    <img src="./db/posters/joker.jpg" alt="Joker Poster">
+                    <img src="" alt="Joker Poster" id="movie_poster">
                 </picture>
-                <h1 class="fs-600">Joker: The Last Dance <span class="badge transparent">R</span></h1>
+                <h1 class="fs-600" id="movie_name">Joker: The Last Dance <span class="badge transparent"
+                        id="movie_category">R</span> </h1>
                 <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
-                    <span>2 Hrs 30 Mins</span>
-                    <span class="badge">2D</span>
+                    <span id="movie_duration">2 Hrs 30 Mins</span>
+                    <span class="badge" id="movie_dimension">2D</span>
                 </p>
 
             </section>
-
             <div class="divider mobile-only"></div>
 
             <section class="movie-info" style="align-items: start; text-align: start;">
@@ -46,12 +46,12 @@
                 <h2 class="fs-400 desk-only" style="margin-top: 2.8rem;">Your Preferences</h2>
                 <div class="divider desk-only"></div>
                 <div>
-                    <p><span class="fs-600">02 Oct, </span> <span class="subtitle">2024</span></p>
-                    <p><span class="fs-600">03:30</span> <span class="subtitle">PM</span></p>
+                    <p><span class="fs-600" id="movie_date"></p>
+                    <p><span class="fs-600" id="movie_time"></p>
                 </div>
                 <div class="divider desk-only"></div>
                 <div class="mobile-only">
-                    <p><span class="subtitle">In</span> <span class="fs-600">English</span></p>
+                    <p><span class="subtitle">In</span> <span class="fs-600" id="movie_language"></span></p>
                     <p>Gopal Nagar, Amravati</p>
                 </div>
                 <div class="desk-only">
@@ -59,11 +59,11 @@
                 </div>
                 <div class="divider desk-only"></div>
                 <div class="desk-only">
-                    <p>Gopal Nagar, Amravati</p>
+                    <p id="movie_location"></p>
                 </div>
 
-                <button class="primary desk-only" style="margin-top: auto;">
-                    Confirm <span>$</span> Seats
+                <button class="primary desk-only seat-submit-btn" style="margin-top: auto;">
+                    <span>Confirm <span class="seats-count">0</span> Seats</span>
                     <span class="icon"><i class="bi bi-arrow-right"></i></span>
                 </button>
 
@@ -71,7 +71,7 @@
 
             <div class="divider mobile-only"></div>
 
-            <form action="" method="post" class="movie-form seats-sec" novalidate>
+            <form action="" method="post" class="movie-form seats-sec">
                 <h2 class="fs-400">Select Seats</h2>
 
                 <div>
@@ -84,11 +84,12 @@
                         Available
                     </p>
                     <p>
-                        <span style="background-color: var(--clr-primary) !important; color: var(--clr-white);">Seat</span>
+                        <span
+                            style="background-color: var(--clr-primary) !important; color: var(--clr-white);">Seat</span>
                         Selected
                     </p>
                     <p>
-                        <span style="opacity: .5;">Seat</span>
+                        <span style="opacity: .2;">Seat</span>
                         Not Available
                     </p>
                 </div>
@@ -100,8 +101,8 @@
                 </div>
 
                 <div class="btn-box">
-                    <button class="primary mobile-only">
-                        Confirm <span>$</span> Seats
+                    <button class="primary mobile-only seat-submit-btn" type="button">
+                        <span>Confirm <span class="seats-count">0</span> Seats</span>
                         <span class="icon"><i class="bi bi-arrow-right"></i></span>
                     </button>
                 </div>

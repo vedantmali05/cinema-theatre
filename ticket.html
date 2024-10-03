@@ -28,8 +28,9 @@
                         <p>Ticket No.: 123456</p>
                     </div>
                     <div class="movie-details">
-                        <p class="fs-600">Joker: The Last Dance</p>
-                        <p><span class="badge transparent">R</span><span class="badge transparent">English</span> <span class="badge transparent">3D </span></p>
+                        <p class="fs-600" id="movie_name">Joker: The Last Dance</p>
+                        <p><span class="badge transparent" id="movie_language">English</span> <span
+                                class="badge transparent" id="movie_dimension">3D </span></p>
                     </div>
                 </div>
                 <div class="divider"></div>
@@ -37,15 +38,15 @@
                     <table>
                         <tr>
                             <td>Show Date:</td>
-                            <td>01 Oct, 2024</td>
+                            <td id="movie_date">N/A</td>
                         </tr>
                         <tr>
                             <td>Show Time:</td>
-                            <td>03:30 PM</td>
+                            <td id="movie_time">N/A</td>
                         </tr>
                         <tr>
                             <td>Location:</td>
-                            <td>Cineforest Cinemas, Gopal Nagar, Amravati</td>
+                            <td id="movie_location">N/A</td>
                         </tr>
                     </table>
                 </div>
@@ -54,20 +55,20 @@
                     <table>
                         <tr>
                             <td>Name:</td>
-                            <td>Vedant Nandkishor Mali</td>
+                            <td id="user_name">N/A</td>
                         </tr>
                         <tr>
                             <td>Screen No.:</td>
-                            <td>01</td>
+                            <td id="movie_screen">N/A</td>
                         </tr>
                         <tr>
-                            <td>$ Seats:</td>
-                            <td>Q11, Q22, Q33</td>
+                            <td id="movie_seats_count">N/A Seats:</td>
+                            <td id="movie_seats">N/A</td>
                         </tr>
                         <tr>
                             <td>Price:</td>
-                            <td><span class="fs-600">₹ 824</span> <span class="subtitle">(₹274 <i class="bi bi-x"></i> 3
-                                    Seats)</span></td>
+                            <td><span class="fs-600" id="movie_total_price">₹ N/A</span> <span class="subtitle"
+                                    id="movie_price_calculation"></td>
                         </tr>
                     </table>
                 </div>
@@ -79,8 +80,8 @@
             </section>
 
             <section class="btn-box">
-                <button class="ghost">Home</button>
-                <button class="primary">Download</button>
+                <button class="ghost"><a href="index.html">Home</a></button>
+                <button class="primary" id="download_tickets_btn">Download</button>
             </section>
         </section>
     </main>

@@ -124,12 +124,12 @@ i.bi-star-fill {
 
 .movie-form > * {
   width: 100%;
-  max-width: 42rem;
+  max-width: 56rem;
   margin: auto;
   margin-top: 2.4rem;
 }
 
-.main-content.main-preferences .movie-form > * {
+.main-content.main-preferences .movie-form:not(.payment-form) > * {
   max-width: 80rem;
   margin-left: 0;
 }
@@ -140,21 +140,6 @@ i.bi-star-fill {
 
 .movie-form > * > * {
   margin-top: 2.4rem;
-}
-
-.movie-form .total-price {
-  display: flex;
-  justify-content: space-between;
-}
-
-#seats_count {
-  text-align: center;
-  font-size: var(--fs-700);
-}
-
-.icon-frame:has(#seats_count) {
-  height: 12rem;
-  border-color: transparent;
 }
 
 fieldset :is(.show-dates, .show-times) {
@@ -326,6 +311,14 @@ fieldset :is(.show-dates, .show-times) input {
   background-color: var(--clr-primary) !important;
 }
 
+.seat-grid label:has(input:disabled) {
+  opacity: 0.2;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(10);
+  background-color: var(--clr-black-light);
+}
+
 @media (min-width: 425px) {
   .btn-box button.primary,
   .seats-sec button.primary {
@@ -359,6 +352,13 @@ fieldset :is(.show-dates, .show-times) input {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  background-color: var(--clr-grey-bg);
+}
+
+@media print {
+  .ticket * {
+    color: #000000 !important;
+  }
 }
 
 .main-content:has(.movie-info) .ticket {

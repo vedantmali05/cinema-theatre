@@ -1,6 +1,5 @@
-import { getFirstIfArray, getFromStorage, saveToStorage, toTwoDigit, formatDateCommon } from "./utils/utils.js";
+import { getFirstIfArray, getFromStorage, saveToStorage, toTwoDigit, formatDateCommon, getRandomInRange, formatINR } from "./utils/utils.js";
 import { MOVIE_LIST } from "./utils/const.js";
-
 
 function convertToHoursMinutes(timeString) {
     const [hours, minutes] = timeString.split(":");
@@ -32,6 +31,19 @@ function convertTo12Hour(timeStr) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    let USER_PREFERENCES = {
+        name: "Vedant Nandkishor Mali",
+        showDate: "12/10/2024",
+        showTime: "12:00",
+        showLanguage: "Hindi",
+        showLocation: "Amravati",
+        seatsArr: new Set(),
+    }
+
+    USER_PREFERENCES.seatsArr.add("AO1")
+    USER_PREFERENCES.seatsArr.add("AO2")
+    USER_PREFERENCES.seatsArr.add("AO3")
 
     /* ///////////////
         HOME PAGE
@@ -125,10 +137,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const CURRENT_MOVIE = getFromStorage("current_movie");
 
     if (CURRENT_MOVIE && CURRENT_MOVIE.length != 0) {
-        document.getElementById("movie_poster").src = "./db/posters/" + CURRENT_MOVIE.poster;
-        document.getElementById("movie_name").innerHTML = CURRENT_MOVIE.name + ` <span class="badge transparent" id="movie_category">${CURRENT_MOVIE.ratingCategory}</span>`;
-        document.getElementById("movie_duration").innerHTML = convertToHoursMinutes(CURRENT_MOVIE.duration);
-        document.getElementById("movie_dimension").innerHTML = CURRENT_MOVIE.dimensional;
+
+        // TODO: Remove when values are returned from backend
+        USER_PREFERENCES.screen = CURRENT_MOVIE.availableScreens[getRandomInRange(0, USER_PREFERENCES.seatsArr.size)];
+
+        // TODO: Remove when values are returned from backend
+        USER_PREFERENCES.totalPrice = CURRENT_MOVIE.price * USER_PREFERENCES.seatsArr.size;
+
+        function setInnerHTML(elem, content) {
+            if (elem) elem.innerHTML = content;
+        }
+
+        if (document.getElementById("movie_poster")) document.getElementById("movie_poster").src = "./db/posters/" + CURRENT_MOVIE.poster;
+
+        setInnerHTML(document.getElementById("movie_name"), CURRENT_MOVIE.name + ` <span class="badge transparent" id="movie_category">${CURRENT_MOVIE.ratingCategory}</span>`);
+        setInnerHTML(document.getElementById("movie_duration"), convertToHoursMinutes(CURRENT_MOVIE.duration));
+        setInnerHTML(document.getElementById("movie_dimension"), CURRENT_MOVIE.dimensional);
+        setInnerHTML(document.getElementById("movie_date"), `${formatDateCommon(USER_PREFERENCES.showDate).split(",")[0]}, </span><span class="subtitle">${formatDateCommon(USER_PREFERENCES.showDate).split(",")[1]}</span>`)
+        setInnerHTML(document.getElementById("movie_time"), `${convertTo12Hour(USER_PREFERENCES.showTime).split(" ")[0]}, </span><span class="subtitle">${convertTo12Hour(USER_PREFERENCES.showTime).split(" ")[1]}</span>`)
+        setInnerHTML(document.getElementById("movie_language"), `${USER_PREFERENCES.showLanguage}`)
+
+        setInnerHTML(document.getElementById("movie_location"), `CineForest Cinemas, ${USER_PREFERENCES.showLocation}`)
+
+        setInnerHTML(document.getElementById("movie_screen"), USER_PREFERENCES.screen);
+        setInnerHTML(document.getElementById("movie_seats_count"), formatINR(USER_PREFERENCES.seatsArr.size, false) + " Seats:");
+
+        if (USER_PREFERENCES.seatsArr.size > 0) setInnerHTML(document.getElementById("movie_seats"), Array.from(USER_PREFERENCES.seatsArr).join(", "));
+        setInnerHTML(document.getElementById("movie_total_price"), formatINR(USER_PREFERENCES.totalPrice));
+        setInnerHTML(document.getElementById("movie_price_calculation"), `(${formatINR(CURRENT_MOVIE.price)} <i class="bi bi-x"></i> ${formatINR(USER_PREFERENCES.seatsArr.size, false)} Seats)</span>`);
+
+        setInnerHTML(document.getElementById("user_name"), USER_PREFERENCES.name);
 
         /* ///////////////
             PREFERENCES PAGE
@@ -144,8 +182,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const label = document.createElement("label");
                 label.setAttribute("for", `show_date_${i + 1}`);
 
+                let valueDate = new Date(date);
+                let day = String(valueDate.getDate()).padStart(2, '0');
+                let month = String(valueDate.getMonth() + 1).padStart(2, '0');
+                let year = valueDate.getFullYear();
+
                 label.innerHTML = `
-                <input type="radio" name="show_date" id="show_date_${i + 1}" required>
+                <input type="radio" name="show_date" id="show_date_${i + 1}" required value="${`${day}/${month}/${year}`}">
                 <span>${date.split(",")[0]},<span class="year">${date.split(",")[1]}</span></span>
                 `
                 showDatesCtr.appendChild(label);
@@ -158,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 label.setAttribute("for", `show_time_${i + 1}`);
 
                 label.innerHTML = `
-                <input type="radio" name="show_time" id="show_time_${i + 1}" required>
+                <input type="radio" name="show_time" id="show_time_${i + 1}" required value="${time}">
                 <span>${convertTo12Hour(time).split(" ")[0]} <span class="year">${convertTo12Hour(time).split(" ")[1]}</span></span>
                 `
                 showTimesCtr.appendChild(label);
@@ -173,6 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 label.innerHTML = `<input type="radio" name="show_language" id="show_language_${i + 1}" required>${elem}`
                 showLangaugesCtr.appendChild(label);
             })
+
+            let sortedLocationArray = CURRENT_MOVIE.availableLocations.sort((a, b) => a.localeCompare(b));
 
             CURRENT_MOVIE.availableLocations.forEach((elem, i) => {
                 const label = document.createElement("label");
@@ -200,17 +245,60 @@ document.addEventListener("DOMContentLoaded", () => {
                     let idStr = String.fromCharCode(i) + toTwoDigit(j);
                     seat.setAttribute("for", "seat_grid_" + idStr)
                     seat.innerHTML = `<input type="checkbox" name="seat_grid" id="seat_grid_${idStr}" value="${idStr}" ${false ? "disabled='true'" : ""}></input> ${idStr}`
-
-
                     if (j >= 1 && j <= 3) seatGridLeft.append(seat);
                     if (j >= 4 && j <= 15) seatGridCenter.append(seat);
                     if (j >= 16 && j <= 18) seatGridRight.append(seat);
                 }
             }
-
         }
-    } else {
 
+        let seatsList = document.querySelectorAll("[name='seat_grid']");
+        let seatCountElemList = document.querySelectorAll(".seats-count");
+        let seatSubmitBtnsList = document.querySelectorAll(".seat-submit-btn");
+        let seatForm = document.querySelector(".seats-sec");
+
+
+        const occupiedSeats = [
+            "A01", "B05", "C10", "D02", "E15", "F7", "G12", "H8", "I01", "J18",
+            "K04", "L09", "M06", "N13", "O03", "P17", "Q11", "B12", "D14", "F16"
+        ];
+
+        seatsList.forEach((seat, i) => {
+            occupiedSeats.forEach(occupied => {
+                if (seat.value == occupied) seat.disabled = true;
+            })
+
+            seat.addEventListener("change", () => {
+                if (seat.checked) USER_PREFERENCES.seatsArr.add(seat.value);
+                else USER_PREFERENCES.seatsArr.delete(seat.value);
+                USER_PREFERENCES.seatsArr = USER_PREFERENCES.seatsArr.sort((a, b) => a.localeCompare(b))
+                let numOfSeatsSelected = USER_PREFERENCES.seatsArr.size;
+
+                seatCountElemList.forEach(elem => elem.innerHTML = numOfSeatsSelected);
+                seatSubmitBtnsList.forEach(btn => btn.disabled = numOfSeatsSelected < 1 ? true : false)
+            })
+        })
+
+
+        seatSubmitBtnsList.forEach(btn => {
+            btn.addEventListener("click", () => {
+                // TODO: Remove when values are returned from backend
+                if (USER_PREFERENCES.seatsArr.size > 0) {
+                    USER_PREFERENCES.totalPrice = CURRENT_MOVIE.price * USER_PREFERENCES.seatsArr.size;
+                    seatForm.submit()
+                }
+                else btn.disabled = true;
+            });
+        });
+
+
+        document.getElementById("download_tickets_btn").addEventListener("click", () => {
+            console.log(window.print());
+        })
+
+
+    } else {
+        if (!bannersBox) window.location.href = "index.html";
     }
 
 

@@ -24,59 +24,55 @@
 
             <section class="movie-info">
                 <div style="width: 100%;">
-                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="index.html"><span
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="preferences.html"><span
                                 class="icon"><i class="bi bi-arrow-left"></i>
                                 Back</span></a></button>
                 </div>
                 <picture class="poster desk-only">
-                    <img src="./db/posters/joker.jpg" alt="Joker Poster">
+                    <img src="" alt="Joker Poster" id="movie_poster">
                 </picture>
-                <h1 class="fs-600">Joker: The Last Dance <span class="badge transparent">R</span></h1>
+                <h1 class="fs-600" id="movie_name">Joker: The Last Dance <span class="badge transparent"
+                        id="movie_category">R</span> </h1>
                 <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
-                    <span>2 Hrs 30 Mins</span>
-                    <span class="badge">2D</span>
+                    <span id="movie_duration">2 Hrs 30 Mins</span>
+                    <span class="badge" id="movie_dimension">2D</span>
                 </p>
 
             </section>
 
             <div class="divider mobile-only"></div>
 
-            <form action="" method="post" class="movie-form" novalidate>
+            <form action="" method="post" class="movie-form payment-form">
                 <h2 class="fs-400">Payment. Confirm your Ticket.</h2>
 
                 <section class="ticket">
                     <table>
                         <tr>
                             <td>Show Date:</td>
-                            <td>01 Oct, 2024</td>
+                            <td id="movie_date">N/A</td>
                         </tr>
                         <tr>
                             <td>Show Time:</td>
-                            <td>03:30 PM</td>
+                            <td id="movie_time">N/A</td>
                         </tr>
                         <tr>
                             <td>Location:</td>
-                            <td>Cineforest Cinemas, Gopal Nagar, Amravati</td>
+                            <td id="movie_location">N/A</td>
                         </tr>
                     </table>
                     <div class="divider"></div>
                     <table>
                         <tr>
-                            <td>Name:</td>
-                            <td>Vedant Nandkishor Mali</td>
-                        </tr>
-                        <tr>
                             <td>Screen No.:</td>
-                            <td>01</td>
+                            <td id="movie_screen">N/A</td>
                         </tr>
                         <tr>
-                            <td>$ Seats:</td>
-                            <td>Q11, Q22, Q33</td>
+                            <td id="movie_seats_count">N/A Seats:</td>
+                            <td id="movie_seats">N/A</td>
                         </tr>
                         <tr>
                             <td>Price:</td>
-                            <td><span class="fs-600">₹ 824</span> <span class="subtitle">(₹274 <i class="bi bi-x"></i> 3
-                                    Seats)</span></td>
+                            <td><span class="fs-600" id="movie_total_price">₹ N/A</span> <span class="subtitle" id="movie_price_calculation"></td>
                         </tr>
                     </table>
 
@@ -100,13 +96,13 @@
                                 placeholder="000">
                         </fieldset>
                         <fieldset>
-                            <label for="payment_card_expiry">Expiry</label>
+                            <label for="payment_card_expiry_month">Expiry</label>
                             <div class="icon-frame">
-                                <input type="text" class="text-input" id="payment_card_expiry"
-                                    name="payment_card_expiry" required placeholder="Month">
+                                <input type="text" class="text-input" id="payment_card_expiry_month"
+                                    name="payment_card_expiry_month" required placeholder="Month">
 
-                                <input type="text" class="text-input" id="payment_card_expiry"
-                                    name="payment_card_expiry" required placeholder="Year">
+                                <input type="text" class="text-input" id="payment_card_expiry_year"
+                                    name="payment_card_expiry_year" required placeholder="Year">
                             </div>
                         </fieldset>
                     </div>
