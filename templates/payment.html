@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineForest</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/logo/logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="style/cinema.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <main>
+        <section class="main-content main-preferences">
+
+            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
+                            class="bi bi-arrow-left"></i>
+                        Back</span></a></button>
+
+            <section class="movie-info">
+                <div style="width: 100%;">
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="preferences.html"><span
+                                class="icon"><i class="bi bi-arrow-left"></i>
+                                Back</span></a></button>
+                </div>
+                <picture class="poster desk-only">
+                    <img src="" alt="Joker Poster" id="movie_poster">
+                </picture>
+                <h1 class="fs-600" id="movie_name">Joker: The Last Dance <span class="badge transparent"
+                        id="movie_category">R</span> </h1>
+                <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
+                    <span id="movie_duration">2 Hrs 30 Mins</span>
+                    <span class="badge" id="movie_dimension">2D</span>
+                </p>
+
+            </section>
+
+            <div class="divider mobile-only"></div>
+
+            <form action="" method="post" class="movie-form payment-form">
+                <h2 class="fs-400">Payment. Confirm your Ticket.</h2>
+
+                <section class="ticket">
+                    <table>
+                        <tr>
+                            <td>Show Date:</td>
+                            <td id="movie_date">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Show Time:</td>
+                            <td id="movie_time">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Location:</td>
+                            <td id="movie_location">N/A</td>
+                        </tr>
+                    </table>
+                    <div class="divider"></div>
+                    <table>
+                        <tr>
+                            <td>Screen No.:</td>
+                            <td id="movie_screen">N/A</td>
+                        </tr>
+                        <tr>
+                            <td id="movie_seats_count">N/A Seats:</td>
+                            <td id="movie_seats">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td><span class="fs-600" id="movie_total_price">₹ N/A</span> <span class="subtitle" id="movie_price_calculation"></td>
+                        </tr>
+                    </table>
+
+                </section>
+
+                <div>
+                    <fieldset>
+                        <label for="payment_card_number">Card Number</label>
+                        <input type="text" class="text-input" id="payment_card_number" name="payment_card_number"
+                            required placeholder="000000000000">
+                    </fieldset>
+                    <fieldset>
+                        <label for="payment_card_name">Cardholder Name</label>
+                        <input type="text" class="text-input" id="payment_card_name" name="payment_card_name" required
+                            placeholder="As per mentioned">
+                    </fieldset>
+                    <div class="cvv-expiry">
+                        <fieldset>
+                            <label for="payment_card_cvv">CVV</label>
+                            <input type="text" class="text-input" id="payment_card_cvv" name="payment_card_cvv" required
+                                placeholder="000">
+                        </fieldset>
+                        <fieldset>
+                            <label for="payment_card_expiry_month">Expiry</label>
+                            <div class="icon-frame">
+                                <input type="text" class="text-input" id="payment_card_expiry_month"
+                                    name="payment_card_expiry_month" required placeholder="Month">
+
+                                <input type="text" class="text-input" id="payment_card_expiry_year"
+                                    name="payment_card_expiry_year" required placeholder="Year">
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="btn-box">
+                        <button class="primary">Confirm Payment</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </section>
+    </main>
+
+
+
+    <script type="module" src="script/main.js"></script>
+    <script type="module" src="script/cinema.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>
