@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineForest</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/logo/logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="style/cinema.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <main>
+        <section class="main-content main-preferences">
+
+            <h1 class="fs-600" style="margin-bottom: 1.6rem;">Download your Show Ticket!</h1>
+
+            <section class="ticket">
+
+                <div>
+                    <div class="header-strip">
+                        <picture class="logo"></picture>
+                        <p>Ticket No.: 123456</p>
+                    </div>
+                    <div class="movie-details">
+                        <p class="fs-600" id="movie_name">Joker: The Last Dance</p>
+                        <p><span class="badge transparent" id="movie_language">English</span> <span
+                                class="badge transparent" id="movie_dimension">3D </span></p>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="show-details">
+                    <table>
+                        <tr>
+                            <td>Show Date:</td>
+                            <td id="movie_date">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Show Time:</td>
+                            <td id="movie_time">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Location:</td>
+                            <td id="movie_location">N/A</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="divider"></div>
+                <div class="seating">
+                    <table>
+                        <tr>
+                            <td>Name:</td>
+                            <td id="user_name">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Screen No.:</td>
+                            <td id="movie_screen">N/A</td>
+                        </tr>
+                        <tr>
+                            <td id="movie_seats_count">N/A Seats:</td>
+                            <td id="movie_seats">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td><span class="fs-600" id="movie_total_price">₹ N/A</span> <span class="subtitle"
+                                    id="movie_price_calculation"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <picture class="barcode">
+                        <img src="./assets/barcode.png" alt="Barcode No.: 123456789000000000">
+                    </picture>
+                </div>
+            </section>
+
+            <section class="btn-box">
+                <button class="ghost"><a href="index.html">Home</a></button>
+                <button class="primary" id="download_tickets_btn">Download</button>
+            </section>
+        </section>
+    </main>
+
+
+
+    <script type="module" src="script/main.js"></script>
+    <script type="module" src="script/cinema.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>
