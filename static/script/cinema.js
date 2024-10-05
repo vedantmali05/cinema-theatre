@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="cinema-banner">
             <!-- Movie Poster -->
             <picture class="poster">
-                <img src="./assets/${movie.poster}" alt="${movie.name} movie poster">
+                <img src="/static/assets/${movie.poster}" alt="${movie.name} movie poster">
             </picture>
 
             <!-- Contents STARTS -->
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </a>
                         </button>
                         <button class="primary book-ticket-btn" data-movie-id="${movie.id}">
-                            Book Tickets
+                            <a href="/preferences">Book Tickets</a>
                         </button>
                     </div>
                 </section>
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (elem) elem.innerHTML = content;
         }
 
-        if (document.getElementById("movie_poster")) document.getElementById("movie_poster").src = "./assets/" + CURRENT_MOVIE.poster;
+        if (document.getElementById("movie_poster")) document.getElementById("movie_poster").src = "/static/assets/" + CURRENT_MOVIE.poster;
 
         setInnerHTML(document.getElementById("movie_name"), CURRENT_MOVIE.name + ` <span class="badge transparent" id="movie_category">${CURRENT_MOVIE.ratingCategory}</span>`);
         setInnerHTML(document.getElementById("movie_duration"), convertToHoursMinutes(CURRENT_MOVIE.duration));

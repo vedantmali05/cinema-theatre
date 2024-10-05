@@ -96,7 +96,7 @@ UTILITY CLASSES
 .divider.dotted {
   border: none;
   height: 0.4rem;
-  background: url("../assets/dot-grey.svg");
+  background: url("./static/assets/dot-grey.svg");
   background-repeat: repeat-x;
   background-size: contain;
   background-position: center;

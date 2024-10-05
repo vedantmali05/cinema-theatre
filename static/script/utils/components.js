@@ -134,7 +134,7 @@ export function createDialog(options = {}) {
     <section class="dialog" style="animation: fadeScaleDownIn 0.5s linear">
     <h3 class="fs-500 center">${headline}</h3>
     <section class="dialog-body">
-            ${illustration ? `<div><picture class="center dialog-illus"><img src="./assets/illus/${illustration}"></picture></div>` : ""}
+            ${illustration ? `<div><picture class="center dialog-illus"><img src="/static/assets/illus/${illustration}"></picture></div>` : ""}
             ${description ? `<div><p class="msg subtitle center">${description}</p></div>` : ""}
             ${component ? `<div class="dialog-component">${component?.outerHTML}</div>` : ""}
             </section>

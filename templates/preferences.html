@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
     <title>CineForest</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="assets/logo/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/logo/logo.svg' %}" type="image/x-icon">
 
-    <link rel="stylesheet" href="style/cinema.css">
+    <link rel="stylesheet" href="{% static 'style/cinema.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
@@ -42,7 +43,8 @@
 
             <div class="divider mobile-only"></div>
 
-            <form action="" method="post" class="movie-form" id="preferences_form">
+            <form action="{% url 'seats' %}" method="post" class="movie-form" id="preferences_form">
+                {% csrf_token %}
                 <h2 class="fs-400">Select Show Preferences</h2>
                 <div>
                     <fieldset>
@@ -71,7 +73,8 @@
                 </div>
 
                 <div class="btn-box">
-                    <button type="submit" class="primary">Select Seats<span class="icon"><i class="bi bi-arrow-right"></i></span></button>
+                    <button type="submit" class="primary">Select Seats<span class="icon"><i
+                                class="bi bi-arrow-right"></i></span></button>
                 </div>
 
             </form>
@@ -81,8 +84,8 @@
 
 
 
-    <script type="module" src="script/main.js"></script>
-    <script type="module" src="script/cinema.js"></script>
+    <script type="module" src="{% static 'script/main.js' %}"></script>
+    <script type="module" src="{% static 'script/cinema.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
