@@ -72,8 +72,13 @@
 
             <div class="divider mobile-only"></div>
 
-            <form action="{% url 'payment' %}" method="post" class="movie-form seats-sec">
+            <form action="{% url 'seats' %}" method="post" class="movie-form seats-sec">
                 {% csrf_token %}
+                <!-- Hidden inputs to pass the GET parameters as POST -->
+                <input type="hidden" name="show_date" value="{{ show_date }}">
+                <input type="hidden" name="show_time" value="{{ show_time }}">
+                <input type="hidden" name="show_language" value="{{ language }}">
+                <input type="hidden" name="show_location" value="{{ location }}">
                 <h2 class="fs-400">Select Seats</h2>
 
                 <div>

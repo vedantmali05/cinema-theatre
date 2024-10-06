@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    {% for ticket in tickets %}
 
     <main>
         <section class="main-content main-preferences">
@@ -87,7 +88,7 @@
         </section>
     </main>
 
-
+    {% endfor %}
 
     <script type="module" src="{% static 'script/main.js' %}"></script>
     <script type="module" src="{% static 'script/cinema.js' %}"></script>

@@ -1,7 +1,9 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
-from .models import Movie
+from .models import Movie,Ticket
+import urllib.parse
+from datetime import datetime
 
 # Create your views here.
 
@@ -12,23 +14,95 @@ def preferences(request):
     return render(request, "preferences.html")
 
 def seats(request):
+    tickets=Ticket.objects.all()
+
     show_date = request.GET.get('show_date')
     show_time = request.GET.get('show_time')
-    language = request.GET.get('language')
-    location = request.GET.get('location')
-    print(show_date)
-    print(show_time)
-    print(language)
-    print(location)
-    
-    
-    return render(request,'seats.html')
+    language = request.GET.get('show_language')
+    location = request.GET.get('show_location')
 
+    if request.method == "POST":
+        # Retrieve selected seats from POST request
+        seats = request.POST.getlist('seat_grid')
+        show_time = request.POST.get('show_time')
+        show_date = request.POST.get('show_date')
+        language =  request.POST.get('show_language')
+        location =  request.POST.get('show_location')
+
+        
+        params = {
+            'show_date': show_date,
+            'show_time': show_time,
+            'language': language,
+            'location': location,
+            'seats': ','.join(seats)  # Convert list to comma-separated string
+        }
+        query_string = urllib.parse.urlencode(params)
+        return redirect(f'/payment/?{query_string}')
+
+
+    if show_date and show_time and language and location:
+        ticket = tickets.filter(
+            show_date=show_date,
+            show_time=show_time,
+            movie_language=language,
+            location_selected=location
+        )
+    
+    # Prepare the context dictionary
+    context = {
+        'tickets': ticket,  
+        'show_date': show_date,
+        'show_time': show_time,
+        'language': language,
+        'location': location
+    }
+    return render(request, 'seats.html',context)
+    
 def payment(request):
-    return render(request,'payment.html')
+    if request.method == "POST":
+        # Retrieve GET parameters from hidden form inputs (now sent via POST)
+        show_date_str = request.POST.get('show_date')
+        show_time = request.POST.get('show_time')
+        language = request.POST.get('language')
+        location = request.POST.get('location')
+        seats = request.POST.get('seats').split(',')  # Split seats back into a list
 
-def ticket(request):
-    return render(request,'ticket.html')
+        # Retrieve card details from POST request
+        card_number = request.POST.get('payment_card_number')
+        name = request.POST.get('payment_card_name')
+
+        try:
+            show_date = datetime.strptime(show_date_str, '%d/%m/%Y').date()
+        except ValueError:
+            return render(request, 'payment.html', {'error': 'Invalid date format'})
+
+        # Debugging: Print all values
+        print(f"Card Number: {card_number}")
+        print(f"Name: {name}")
+        print(f"Seats: {seats}")
+        print(f"Show Time: {show_time}")
+        print(f"Show Date: {show_date}")
+        print(f"Language: {language}")
+        print(f"Location: {location}")
+
+        
+        # Ticket.objects.create(
+        #     movie_id=1234,  
+        #     show_date=show_date,
+        #     show_time=show_time,
+        #     movie_language=language,
+        #     location_selected=location,
+        #     seats_selected=seats,  
+        #     ticket_price=100,  
+        #     name=name,
+        #     card_number=card_number
+        # )
+        return redirect('/ticket/')
+
+    return render(request, 'payment.html')
+
+
 
 def get_movies(request):
     movies = Movie.objects.all().values()  
@@ -62,3 +136,7 @@ def get_movies(request):
 
     return JsonResponse(formatted_movies, safe=False)
     
+def ticket(request):
+    
+    
+    return render(request,'ticket.html',context)

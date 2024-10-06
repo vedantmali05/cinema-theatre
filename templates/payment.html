@@ -43,8 +43,14 @@
 
             <div class="divider mobile-only"></div>
 
-            <form action="" method="post" class="movie-form payment-form">
+            <form action="{% url 'payment' %}" method="post" class="movie-form payment-form">
+                {% csrf_token %}
                 <h2 class="fs-400">Payment. Confirm your Ticket.</h2>
+                <input type="hidden" name="show_date" value="{{ request.GET.show_date }}">
+                <input type="hidden" name="show_time" value="{{ request.GET.show_time }}">
+                <input type="hidden" name="language" value="{{ request.GET.language }}">
+                <input type="hidden" name="location" value="{{ request.GET.location }}">
+                <input type="hidden" name="seats" value="{{ request.GET.seats }}">
 
                 <section class="ticket">
                     <table>
