@@ -1,5 +1,5 @@
 import { getFirstIfArray, getFromStorage, saveToStorage, toTwoDigit, formatDateCommon, getRandomInRange, formatINR } from "./utils/utils.js";
-import { MOVIE_LIST } from "./utils/const.js";
+// import { MOVIE_LIST } from "./utils/const.js";
 
 function convertToHoursMinutes(timeString) {
     const [hours, minutes] = timeString.split(":");
@@ -11,8 +11,8 @@ function parseDate(dateStr) {
 }
 
 function getDatesInRange(startDate, endDate) {
-    let date = parseDate(startDate);
-    let end = parseDate(endDate);
+    let date = new Date(startDate);
+    let end = new Date(endDate);    
     let datesArr = [];
 
     // Loop through each day from startDate to endDate
@@ -46,19 +46,56 @@ document.addEventListener("DOMContentLoaded", () => {
     USER_PREFERENCES.seatsArr.add("AO3")
 
     /* ///////////////
+        FETCHING MOVIE LIST FROM BACKEND
+    /////////////// */
+
+    /* ///////////////
+    FETCHING MOVIE LIST FROM BACKEND
+/////////////// */
+
+    let MOVIE_LIST = [];
+
+    // Fetch movies and then render banners
+    fetchMovies();
+
+    /**
+     * Function to fetch the movie list
+     */
+    function fetchMovies() {
+        fetch('/api/movies/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update MOVIE_LIST with the fetched data
+                MOVIE_LIST = data;
+
+                // After fetching, render the banners
+                renderMovieBanners();
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the data:', error);
+            });
+    }
+
+    /* ///////////////
         HOME PAGE
     /////////////// */
-    let bannersBox = document.getElementById("movie_banners_box");
+    function renderMovieBanners() {
+        let bannersBox = document.getElementById("movie_banners_box");
 
-    if (bannersBox) {
-        saveToStorage("current_movie", []);
-        MOVIE_LIST.forEach((movie) => {
 
-            const banner = document.createElement('div');
-            banner.classList.add('swiper-slide');
+        if (bannersBox) {
+            saveToStorage("current_movie", []);
+            MOVIE_LIST.forEach((movie) => {
+                const banner = document.createElement('div');
+                banner.classList.add('swiper-slide');
 
-            // Create cinema banner structure
-            banner.innerHTML = `
+                // Create cinema banner structure
+                banner.innerHTML = `
         <div class="cinema-banner">
             <!-- Movie Poster -->
             <picture class="poster">
@@ -93,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         <strong class="badge transparent">${movie.language.join(', ')}</strong>
                     </div>
                 </section>
-
+                
                 <!-- Column Right -->
                 <section class="col-right">
                     <div>
-                        <p class="rating nowrap"><span>${movie.rating.toFixed(1)}</span>/10 <span class="icon"
+                        <p class="rating nowrap"><span>${movie.rating}</span>/10 <span class="icon"
                                 style="margin-left: .4rem;"><i class="bi bi-star-fill"></i></span></p>
                     </div>
                     <div class="btn-box">
@@ -105,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <a href="${movie.trailer}" target="_blank">
                                 <span class="icon"><i class="bi bi-youtube"></i></span>
                                 Trailer
-                            </a>
+                                </a>
                         </button>
                         <button class="primary book-ticket-btn" data-movie-id="${movie.id}">
                             <a href="/preferences">Book Tickets</a>
@@ -114,25 +151,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 </section>
             </section>
             <!-- Contents ENDS -->
-        </div>
+            </div>
     `;
 
-            // Append the banner to the container
-            bannersBox.appendChild(banner);
-        });
+                // Append the banner to the container
+                bannersBox.appendChild(banner);
+            });
 
-        document.querySelectorAll(".book-ticket-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
+            document.querySelectorAll(".book-ticket-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
 
-                let currentMovie = MOVIE_LIST.find(movie => movie.id == btn.getAttribute("data-movie-id"));
-                // console.log(currentMovie);
-                // Save to Storage
-                saveToStorage("current_movie", currentMovie);
-                window.location.href = "preferences.html";
+                    let currentMovie = MOVIE_LIST.find(movie => movie.id == btn.getAttribute("data-movie-id"));
+                    // console.log(currentMovie);
+                    // Save to Storage
+                    saveToStorage("current_movie", currentMovie);
+                    window.location.href = "preferences.html";
+                })
             })
-        })
-    }
+        }
 
+    }
 
     const CURRENT_MOVIE = getFromStorage("current_movie");
 
@@ -213,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
             CURRENT_MOVIE.language.forEach((elem, i) => {
                 const label = document.createElement("label");
                 label.setAttribute("for", `show_language_${i + 1}`);
-                label.innerHTML = `<input type="radio" name="show_language" id="show_language_${i + 1}" required>${elem}`
+                label.innerHTML = `<input type="radio" name="show_language" id="show_language_${i + 1}" value="${elem}" required>${elem}`
                 showLangaugesCtr.appendChild(label);
             })
 
@@ -222,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
             CURRENT_MOVIE.availableLocations.forEach((elem, i) => {
                 const label = document.createElement("label");
                 label.setAttribute("for", `show_location_${i + 1}`);
-                label.innerHTML = `<input type="radio" name="show_location" id="show_location_${i + 1}" required>${elem}`
+                label.innerHTML = `<input type="radio" name="show_location" id="show_location_${i + 1}" value="${elem}" required>${elem}`
                 showLocationCtr.appendChild(label);
             })
 
@@ -299,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     } else {
-        if (!bannersBox) window.location.href = "index.html";
+        // if (!bannersBox) window.location.href = "index.html";
     }
 
 
