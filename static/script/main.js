@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   pictureLogoList?.forEach((logo) => {
     let img = this.createElement("img");
 
-    img.src = `assets/logo/logo.svg`;
+    img.src = `/static/assets/logo/logo.svg`;
     switch (logo.getAttribute("data-size")) {
       default:
       case UI_SIZE.xs:
