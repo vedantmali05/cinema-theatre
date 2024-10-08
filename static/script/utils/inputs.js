@@ -92,7 +92,6 @@ export function allowNumberInputOnly(inputTag, allowFloating = true, allowNegati
   })
 }
 
-
 // FUNCTION to INCREMENT or DECREMENT Numeric Input value by given number
 export function incrementWithDifference(input, incBy = 1, allowNegative = true) {
   let value = input.value.trim();

@@ -131,6 +131,7 @@ export function getFromStorage(key) {
 /////////////// */
 
 export function formatDateCommon(dateStr) {
+  dateStr = parseDate(dateStr);
   const DATE = new Date(dateStr);
   return `${toTwoDigit(DATE.getDate())} ${DATE_MONTHS_SHORT[DATE.getMonth()]}, ${DATE.getFullYear()}`;
 }
@@ -206,4 +207,49 @@ export function setLocationByRegion(elem, popupElem) {
   }
 
   return [posTop, posLeft];
+}
+
+
+
+export function convertToHoursMinutes(timeString) {
+  const [hours, minutes] = timeString.split(":");
+  return `${hours} hrs ${minutes} mins`;
+}
+
+export function parseDate(dateStr) {
+  // Check if the date string is in the format "Fri Sep 27 2024 05:30:00 GMT+0530 (India Standard Time)"
+  if (isNaN(Date.parse(dateStr)) === false) {
+    // If it's a valid Date object string, return as is (already parsed)
+    return new Date(dateStr);
+  }
+
+  // If it's in "dd/mm/yyyy" format, parse it
+  const [day, month, year] = dateStr.split("/").map(Number);
+  return new Date(year, month - 1, day); // Month is 0-indexed
+}
+
+
+export function getDatesInRange(startDate, endDate) {
+  let date = new Date(startDate);
+  let end = new Date(endDate);
+  let datesArr = [];
+
+  // Loop through each day from startDate to endDate
+  while (date <= end) {
+    datesArr.push(formatDateCommon(date));
+    date.setDate(date.getDate() + 1);
+  }
+  return datesArr;
+}
+
+export function convertTo12Hour(timeStr) {
+  let [hours, minutes] = timeStr.split(":").map(Number);
+  let period = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+  return `${hours}:${minutes < 10 ? '0' + minutes : minutes} ${period}`;
+}
+
+// SET INNERHTML IF ELEMENT EXISTS
+export function setInnerHTML(elem, content) {
+  if (elem) elem.innerHTML = content;
 }
