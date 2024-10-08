@@ -43,7 +43,7 @@ def seats(request):
     try:
         show_date = datetime.strptime(show_date_str, '%d/%m/%Y').date()
     except ValueError:
-        return render(request, 'payment.html', {'error': 'Invalid date format'})
+        return HttpResponse("Error in date format")
         
 
 
@@ -66,6 +66,7 @@ def seats(request):
     return render(request, 'seats.html',context)
     
 def payment(request):
+    
     if request.method == "POST":
         # Retrieve GET parameters from hidden form inputs (now sent via POST)
         show_date_str = request.POST.get('show_date')
