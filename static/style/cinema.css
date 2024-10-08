@@ -35,8 +35,13 @@ i.bi-star-fill {
 .cinema-banner .poster,
 .movie-info .poster {
   max-width: 12rem;
+  max-height: 26rem;
   border-radius: 0.8rem;
   overflow: hidden;
+}
+
+.cinema-banner .poster img {
+  object-fit: cover;
 }
 
 .cinema-banner .description {

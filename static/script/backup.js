@@ -1,4 +1,4 @@
-import { getFirstIfArray, getFromStorage, saveToStorage, toTwoDigit, formatDateCommon, getRandomInRange, formatINR } from "./utils/utils.js";
+import { getFirstIfArray, getFromStorage, saveToStorage, toTwoDigit, formatDateCommon, getRandomInRange, formatINR, convertToHoursMinutes, parseDate, getDatesInRange, convertTo12Hour, setInnerHTML } from "./utils/utils.js";
 // import { MOVIE_LIST } from "./utils/const.js";
 
 function convertToHoursMinutes(timeString) {
