@@ -296,10 +296,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let seatForm = document.querySelector(".seats-sec");
 
 
-        // const occupiedSeats = [
-        //     "A01", "B05", "C10", "D02", "E15", "F7", "G12", "H8", "I01", "J18",
-        //     "K04", "L09", "M06", "N13", "O03", "P17", "Q11", "B12", "D14", "F16"
-        // ];
+        const occupiedSeats = [
+            "A01", "B05", "C10", "D02", "E15", "F7", "G12", "H8", "I01", "J18",
+            "K04", "L09", "M06", "N13", "O03", "P17", "Q11", "B12", "D14", "F16"
+        ];
 
         seatsList.forEach((seat, i) => {
             occupiedSeats.forEach(occupied => {

@@ -16,7 +16,7 @@ def preferences(request):
 def seats(request):
     tickets=Ticket.objects.all()
 
-    show_date = request.GET.get('show_date')
+    show_date_str = request.GET.get('show_date')
     show_time = request.GET.get('show_time')
     language = request.GET.get('show_language')
     location = request.GET.get('show_location')
@@ -39,6 +39,12 @@ def seats(request):
         }
         query_string = urllib.parse.urlencode(params)
         return redirect(f'/payment/?{query_string}')
+
+    try:
+        show_date = datetime.strptime(show_date_str, '%d/%m/%Y').date()
+    except ValueError:
+        return render(request, 'payment.html', {'error': 'Invalid date format'})
+        
 
 
     if show_date and show_time and language and location:
@@ -72,20 +78,14 @@ def payment(request):
         card_number = request.POST.get('payment_card_number')
         name = request.POST.get('payment_card_name')
 
+        
+        # Convert the show date to a datetime object with the correct format
         try:
-            show_date = datetime.strptime(show_date_str, '%d/%m/%Y').date()
+            show_date = datetime.strptime(show_date_str, '%b. %d, %Y').date()  # e.g., 'Oct. 6, 2024'
         except ValueError:
-            return render(request, 'payment.html', {'error': 'Invalid date format'})
+            return HttpResponse("error at converting date format")
 
-        # Debugging: Print all values
-        print(f"Card Number: {card_number}")
-        print(f"Name: {name}")
-        print(f"Seats: {seats}")
-        print(f"Show Time: {show_time}")
-        print(f"Show Date: {show_date}")
-        print(f"Language: {language}")
-        print(f"Location: {location}")
-
+        
         
         # Ticket.objects.create(
         #     movie_id=1234,  
@@ -137,6 +137,4 @@ def get_movies(request):
     return JsonResponse(formatted_movies, safe=False)
     
 def ticket(request):
-    
-    
-    return render(request,'ticket.html',context)
+    return render(request,'ticket.html')
