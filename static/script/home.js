@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </a>
                         </button>
                         <button class="primary book-ticket-btn" data-movie-id="${movie.id}">
-                            <a href="/preferences">Book Tickets</a>
+                            <a href="/preferences?movie_id=${movie.id}">Book Tickets</a>
                         </button>
                     </div>
                 </section>

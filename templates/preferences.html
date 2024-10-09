@@ -18,7 +18,6 @@
 
     <main>
         <section class="main-content main-preferences">
-
             <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
                             class="bi bi-arrow-left"></i>
                         Back</span></a></button>
@@ -45,6 +44,7 @@
 
             <form action="{% url 'seats' %}" method="get" class="movie-form" id="preferences_form">
                 <h2 class="fs-400">Select Show Preferences</h2>
+                <input type="hidden" name="movie_id" value="{{movie_id}}">
                 <div>
                     <fieldset>
                         <label>Show Dates</label>

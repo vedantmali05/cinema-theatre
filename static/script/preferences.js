@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (preferencesForm) {
         let showDatesCtr = document.querySelector(".show-dates")
-        const dates = getDatesInRange(CURRENT_MOVIE.availableFrom, CURRENT_MOVIE.availableTo);
+        let startDate = new Date(CURRENT_MOVIE.availableFrom);
+        if (startDate < new Date()) startDate = new Date();
+        const dates = getDatesInRange(startDate, CURRENT_MOVIE.availableTo);
 
         // Loop through the dates and dynamically create the radio buttons
         dates.forEach((date, i) => {
