@@ -5,10 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CURRENT_MOVIE = getFromStorage("current_movie");
     if (!CURRENT_MOVIE || CURRENT_MOVIE.length == 0) window.location.href = "127.0.0.1:8000";
-    if (document.getElementById("movie_poster")) document.getElementById("movie_poster").src = "/static/assets/" + CURRENT_MOVIE.poster;
-    setInnerHTML(document.getElementById("movie_name"), CURRENT_MOVIE.name + ` <span class="badge transparent" id="movie_category">${CURRENT_MOVIE.ratingCategory || "N/A"}</span>`);
-    setInnerHTML(document.getElementById("movie_duration"), convertToHoursMinutes(CURRENT_MOVIE.duration));
-    setInnerHTML(document.getElementById("movie_dimension"), CURRENT_MOVIE.dimensional);
+
 
 
     // Create a URL object
@@ -20,15 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let USER_PREFERENCES = {
         showDate: params.get('show_date') || '',
         showTime: params.get('show_time') || '',
-        showLanguage: params.get('show_language') || '',
+        showLanguage: params.get('language') || '',
         showLocation: params.get('location') || '',
+        name: params.get('name') || '',
         seatsArr: new Set((params.get('seats') || '').split(','))
     };
+
+    setInnerHTML(document.getElementById("movie_name"), CURRENT_MOVIE.name + ` <span class="badge transparent" id="movie_category">${CURRENT_MOVIE.ratingCategory || "N/A"}</span>`);
+    setInnerHTML(document.getElementById("movie_dimension"), CURRENT_MOVIE.dimensional);
 
     setInnerHTML(document.getElementById("movie_date"), `${formatDateCommon(USER_PREFERENCES.showDate).split(",")[0]}, </span><span class="subtitle">${formatDateCommon(USER_PREFERENCES.showDate).split(",")[1]}</span>`)
     setInnerHTML(document.getElementById("movie_time"), `${convertTo12Hour(USER_PREFERENCES.showTime).split(" ")[0]} </span><span class="subtitle">${convertTo12Hour(USER_PREFERENCES.showTime).split(" ")[1]}</span>`)
     setInnerHTML(document.getElementById("movie_language"), `${USER_PREFERENCES.showLanguage}`)
     setInnerHTML(document.getElementById("movie_location"), `CineForest Cinemas, ${USER_PREFERENCES.showLocation}`)
+    setInnerHTML(document.getElementById("user_name"), `${USER_PREFERENCES.name}`)
+    console.log(USER_PREFERENCES.showLanguage)
 
 
     // TODO: Remove when values are returned from backend

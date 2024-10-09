@@ -18,22 +18,21 @@
 
     <main>
         <section class="main-content">
-
-            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
-                            class="bi bi-arrow-left"></i>
+            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="{% url 'preferences' %}"><span
+                        class="icon"><i class="bi bi-arrow-left"></i>
                         Back</span></a></button>
 
             <section class="movie-info">
                 <div style="width: 100%;">
-                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="preferences.html"><span
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="{% url 'preferences' %}"><span
                                 class="icon"><i class="bi bi-arrow-left"></i>
                                 Back</span></a></button>
                 </div>
                 <picture class="poster desk-only">
                     <img src="" alt="Joker Poster" id="movie_poster">
                 </picture>
-                <h1 class="fs-600" id="movie_name">N/A <span class="badge transparent"
-                        id="movie_category">N/A</span> </h1>
+                <h1 class="fs-600" id="movie_name">N/A <span class="badge transparent" id="movie_category">N/A</span>
+                </h1>
                 <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
                     <span id="movie_duration">N/A</span>
                     <span class="badge" id="movie_dimension">N/A</span>
@@ -116,6 +115,9 @@
 
 
     <script type="module" src="{% static 'script/main.js' %}"></script>
+    <script type="text/javascript">
+        let occupiedSeats = '{{ booked_seats }}'.replace(/&#x27;/g, '').replace(/[\[\]\s]/g, '').split(',');
+    </script>
     <script type="module" src="{% static 'script/seats.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>

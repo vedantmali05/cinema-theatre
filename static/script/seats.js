@@ -59,19 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let seatForm = document.querySelector(".seats-sec");
 
 
-    let occupiedSeats = [
-        "A01", "B05", "C10", "D02", "E15", "F7", "G12", "H8", "I01", "J18",
-        "K04", "L09", "M06", "N13", "O03", "P17", "Q11", "B12", "D14", "F16"
-    ];
-
-    occupiedSeats = [];
-
     let seatCounter = 0;
 
     seatsList.forEach((seat, i) => {
-        occupiedSeats.forEach(occupied => {
-            if (seat.value == occupied) seat.disabled = true;
-        })
+        if (occupiedSeats && occupiedSeats.length > 0) {
+
+            occupiedSeats.forEach(occupied => {
+                if (seat.value == occupied) seat.disabled = true;
+            })
+        }
 
         seat.addEventListener("change", () => {
             if (seat.checked) seatCounter++;

@@ -19,14 +19,14 @@
     <main>
         <section class="main-content main-preferences">
 
-            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
-                            class="bi bi-arrow-left"></i>
+            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="{{request.META.HTTP_REFERER}}
+"><span class="icon"><i class="bi bi-arrow-left"></i>
                         Back</span></a></button>
 
             <section class="movie-info">
                 <div style="width: 100%;">
-                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="preferences.html"><span
-                                class="icon"><i class="bi bi-arrow-left"></i>
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="{{request.META.HTTP_REFERER}}
+"><span class="icon"><i class="bi bi-arrow-left"></i>
                                 Back</span></a></button>
                 </div>
                 <picture class="poster desk-only">
@@ -69,10 +69,7 @@
                     </table>
                     <div class="divider"></div>
                     <table>
-                        <tr>
-                            <td>Screen No.:</td>
-                            <td id="movie_screen">N/A</td>
-                        </tr>
+
                         <tr>
                             <td id="movie_seats_count">N/A Seats:</td>
                             <td id="movie_seats">N/A</td>
@@ -90,7 +87,8 @@
                     <fieldset>
                         <label for="payment_card_number">Card Number</label>
                         <input type="text" class="text-input" id="payment_card_number" name="payment_card_number"
-                            required placeholder="000000000000" value="1234567890" min="100000000000" max="999999999999">
+                            required placeholder="000000000000" value="1234567890" min="100000000000"
+                            max="999999999999">
                     </fieldset>
                     <fieldset>
                         <label for="payment_card_name">Cardholder Name</label>
@@ -107,10 +105,12 @@
                             <label for="payment_card_expiry_month">Expiry</label>
                             <div class="icon-frame">
                                 <input type="text" class="text-input" id="payment_card_expiry_month"
-                                    name="payment_card_expiry_month" required placeholder="Month" value="22" min="1" max="12">
+                                    name="payment_card_expiry_month" required placeholder="Month" value="22" min="1"
+                                    max="12">
 
                                 <input type="text" class="text-input" id="payment_card_expiry_year"
-                                    name="payment_card_expiry_year" required placeholder="Year" value="2022" min="2024" max="2050">
+                                    name="payment_card_expiry_year" required placeholder="Year" value="2022" min="2024"
+                                    max="2050">
                             </div>
                         </fieldset>
                     </div>

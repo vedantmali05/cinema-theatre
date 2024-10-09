@@ -14,8 +14,12 @@ def preferences(request):
     return render(request, "preferences.html")
 
 def seats(request):
-    tickets=Ticket.objects.all()
-
+    tickets = Ticket.objects.all().values()
+    booked_seats=[]
+    for i, ticket in enumerate(tickets):
+        for key, value in ticket.items():
+            booked_seats=ticket['seats_selected']
+    
     show_date_str = request.GET.get('show_date')
     show_time = request.GET.get('show_time')
     language = request.GET.get('show_language')
@@ -54,14 +58,18 @@ def seats(request):
             movie_language=language,
             location_selected=location
         )
-    
+    booked_seats=[]
+    for i, ticket in enumerate(ticket):
+        for key, value in ticket.items():
+            booked_seats=ticket['seats_selected']
+    print(booked_seats)
     # Prepare the context dictionary
-    context = {
-        'tickets': ticket,  
+    context = {  
         'show_date': show_date,
         'show_time': show_time,
         'language': language,
-        'location': location
+        'location': location,
+        'booked_seats':booked_seats
     }
     return render(request, 'seats.html',context)
     
@@ -87,7 +95,7 @@ def payment(request):
             return HttpResponse("error at converting date format")
 
         
-        
+        # TODO:uncomment this after completing all work
         # Ticket.objects.create(
         #     movie_id=1234,  
         #     show_date=show_date,
@@ -99,7 +107,18 @@ def payment(request):
         #     name=name,
         #     card_number=card_number
         # )
-        return redirect('/ticket/')
+
+        
+        params = {
+            'show_date': show_date,
+            'show_time': show_time,
+            'language': language,
+            'location': location,
+            'name':name,
+            'seats': ','.join(seats)  # Convert list to comma-separated string
+        }
+        query_string = urllib.parse.urlencode(params)
+        return redirect(f'/ticket/?{query_string}')
 
     return render(request, 'payment.html')
 
