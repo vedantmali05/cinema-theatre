@@ -548,3 +548,36 @@ export function setDropDownMenu(elem, isInput = false) {
     searchInDatalist(elem, dropDownElem);
   });
 }
+
+
+// Expiry date validation
+export function validateExpiryDate(monthInput, yearInput) {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1; // Months are 0-indexed in JS
+
+  const inputMonth = parseInt(monthInput.value, 10);
+  const inputYear = parseInt(yearInput.value, 10);
+
+  // Check if the expiry year is in the past
+  if (inputMonth > 12) {
+    setInputMsg(yearInput, "Invalid Month");
+    return false;
+  }
+
+  if (inputYear < currentYear) {
+    setInputMsg(yearInput, "Expiry year cannot be in the past.");
+    return false;
+  }
+
+  // If the expiry year is the current year, check if the month is valid
+  if (inputYear === currentYear && inputMonth < currentMonth) {
+    setInputMsg(monthInput, "Expiry month cannot be in the past.");
+    return false;
+  }
+
+  // If all is valid, remove error messages
+  removeInputMsg(monthInput);
+  removeInputMsg(yearInput);
+  return true;
+}
