@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineForest</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/logo/logo.svg' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'style/cinema.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <main>
+        <section class="main-content main-preferences">
+
+            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="index.html"><span class="icon"><i
+                            class="bi bi-arrow-left"></i>
+                        Back</span></a></button>
+
+            <section class="movie-info">
+                <div style="width: 100%;">
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="{% url 'index' %}"><span
+                                class="icon"><i class="bi bi-arrow-left"></i>
+                                Back</span></a></button>
+                </div>
+                <picture class="poster desk-only">
+                    <img src="" alt="Joker Poster" id="movie_poster">
+                </picture>
+                <h1 class="fs-600" id="movie_name">Joker: The Last Dance <span class="badge transparent"
+                        id="movie_category">R</span> </h1>
+                <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
+                    <span id="movie_duration">2 Hrs 30 Mins</span>
+                    <span class="badge" id="movie_dimension">2D</span>
+                </p>
+
+            </section>
+
+            <div class="divider mobile-only"></div>
+
+            <form action="{% url 'seats' %}" method="get" class="movie-form" id="preferences_form">
+                <h2 class="fs-400">Select Show Preferences</h2>
+                <div>
+                    <fieldset>
+                        <label>Show Dates</label>
+                        <div class="check-radio-box show-dates"></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>Show Time</label>
+                        <div class="check-radio-box show-times"></div>
+                    </fieldset>
+
+                    <div class="divider"></div>
+                </div>
+
+                <div>
+                    <fieldset>
+                        <label>Movie Language</label>
+                        <div class="check-radio-box show-languages"></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>CineForest Cinemas Locations</label>
+                        <div class="check-radio-box show-locations"></div>
+                    </fieldset>
+                </div>
+
+                <div class="btn-box">
+                    <button type="submit" class="primary">Select Seats<span class="icon"><i
+                                class="bi bi-arrow-right"></i></span></button>
+                </div>
+
+            </form>
+
+        </section>
+    </main>
+
+
+
+    <script type="module" src="{% static 'script/main.js' %}"></script>
+    <script type="module" src="{% static 'script/preferences.js' %}"></script>
+</body>
+
+</html>

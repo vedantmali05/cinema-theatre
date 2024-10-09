@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineForest</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/logo/logo.svg' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'style/cinema.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <main>
+        <section class="main-content">
+            <button class="text mobile-only" style="margin-left: 1.6rem;"><a href="{% url 'preferences' %}"><span
+                        class="icon"><i class="bi bi-arrow-left"></i>
+                        Back</span></a></button>
+
+            <section class="movie-info">
+                <div style="width: 100%;">
+                    <button class="text desk-only" style="margin-left: 1.6rem;"><a href="{% url 'preferences' %}"><span
+                                class="icon"><i class="bi bi-arrow-left"></i>
+                                Back</span></a></button>
+                </div>
+                <picture class="poster desk-only">
+                    <img src="" alt="Joker Poster" id="movie_poster">
+                </picture>
+                <h1 class="fs-600" id="movie_name">N/A <span class="badge transparent" id="movie_category">N/A</span>
+                </h1>
+                <p class="subtitle nowrap" style="display: flex; gap: .8rem;">
+                    <span id="movie_duration">N/A</span>
+                    <span class="badge" id="movie_dimension">N/A</span>
+                </p>
+
+            </section>
+            <div class="divider mobile-only"></div>
+
+            <section class="movie-info" style="align-items: start; text-align: start;">
+
+                <h2 class="fs-400 desk-only" style="margin-top: 2.8rem;">Your Preferences</h2>
+                <div class="divider desk-only"></div>
+                <div>
+                    <p><span class="fs-600" id="movie_date"></p>
+                    <p><span class="fs-600" id="movie_time"></p>
+                </div>
+                <div class="divider desk-only"></div>
+                <div>
+                    <p><span class="subtitle">In</span> <span class="fs-600" id="movie_language">N/A</span></p>
+                    <div class="divider desk-only"></div>
+                    <p id="movie_location"></p>
+                </div>
+
+                <button class="primary desk-only seat-submit-btn" style="margin-top: auto;">
+                    <span>Confirm <span class="seats-count">0</span> Seats</span>
+                    <span class="icon"><i class="bi bi-arrow-right"></i></span>
+                </button>
+
+            </section>
+
+            <div class="divider mobile-only"></div>
+
+            <form action="{% url 'seats' %}" method="post" class="movie-form seats-sec">
+                {% csrf_token %}
+                <!-- Hidden inputs to pass the GET parameters as POST -->
+                <input type="hidden" name="show_date" value="{{ show_date }}">
+                <input type="hidden" name="show_time" value="{{ show_time }}">
+                <input type="hidden" name="show_language" value="{{ language }}">
+                <input type="hidden" name="show_location" value="{{ location }}">
+                <h2 class="fs-400">Select Seats</h2>
+
+                <div>
+                    <div class="screen"></div>
+                </div>
+
+                <div class="seat-grid-indicator">
+                    <p>
+                        <span>Seat</span>
+                        Available
+                    </p>
+                    <p>
+                        <span
+                            style="background-color: var(--clr-primary) !important; color: var(--clr-white);">Seat</span>
+                        Selected
+                    </p>
+                    <p>
+                        <span style="opacity: .2;">Seat</span>
+                        Not Available
+                    </p>
+                </div>
+
+                <div class="seat-grid">
+                    <div class="check-radio-box seat-grid-left"></div>
+                    <div class="check-radio-box seat-grid-center"></div>
+                    <div class="check-radio-box seat-grid-right"></div>
+                </div>
+
+                <div class="btn-box">
+                    <button class="primary mobile-only seat-submit-btn" type="button">
+                        <span>Confirm <span class="seats-count">0</span> Seats</span>
+                        <span class="icon"><i class="bi bi-arrow-right"></i></span>
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+    </main>
+
+
+
+    <script type="module" src="{% static 'script/main.js' %}"></script>
+    <script type="text/javascript">
+        let occupiedSeats = '{{ booked_seats }}'.replace(/&#x27;/g, '').replace(/[\[\]\s]/g, '').split(',');
+    </script>
+    <script type="module" src="{% static 'script/seats.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

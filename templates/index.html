@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineForest</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/logo/logo.svg' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'style/cinema.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <!-- MAIN STARTS -->
+    <main>
+        <header>
+            <picture class="logo"></picture>
+            <h1>Welcome</h1>
+            <button class="icon"><i class="bi bi-person-circle"></i></button>
+        </header>
+
+        <!-- MAIN CONTENT STARTS -->
+        <section class="main-content">
+
+            <section class="swiper banner-swiper">
+                <div class="swiper-wrapper" id="movie_banners_box"> </div>
+
+            </section>
+        </section>
+        <!-- MAIN CONTENT ENDS -->
+
+    </main>
+    <!-- MAIN ENDS -->
+
+
+    <script type="module" src="{% static 'script/main.js' %}"></script>
+    <script type="module" src="{% static 'script/home.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        setTimeout(() => {
+            var swiper = new Swiper(".banner-swiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                loop: false,
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+            });
+        }, 50);
+    </script>
+</body>
+
+</html>
