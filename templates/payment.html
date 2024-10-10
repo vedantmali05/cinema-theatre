@@ -43,7 +43,7 @@
 
             <div class="divider mobile-only"></div>
 
-            <form action="{% url 'payment' %}" method="post" class="movie-form payment-form">
+            <form action="{% url 'payment' %}" method="post" class="movie-form payment-form" id="payment_form" novalidate>
                 {% csrf_token %}
                 <h2 class="fs-400">Payment. Confirm your Ticket.</h2>
                 <input type="hidden" name="show_date" value="{{ request.GET.show_date }}">
@@ -51,6 +51,7 @@
                 <input type="hidden" name="language" value="{{ request.GET.language }}">
                 <input type="hidden" name="location" value="{{ request.GET.location }}">
                 <input type="hidden" name="seats" value="{{ request.GET.seats }}">
+                <input type="hidden" name="movie_id" value="{{ request.GET.movie_id}}">
 
                 <section class="ticket">
                     <table>
@@ -87,36 +88,38 @@
                     <fieldset>
                         <label for="payment_card_number">Card Number</label>
                         <input type="text" class="text-input" id="payment_card_number" name="payment_card_number"
-                            required placeholder="000000000000" value="1234567890" min="100000000000"
+                            required placeholder="000000000000"  min="100000000000"
                             max="999999999999">
                     </fieldset>
                     <fieldset>
                         <label for="payment_card_name">Cardholder Name</label>
                         <input type="text" class="text-input" id="payment_card_name" name="payment_card_name" required
-                            placeholder="As per mentioned" value="Dinesh">
+                            placeholder="As per mentioned" >
                     </fieldset>
                     <div class="cvv-expiry">
                         <fieldset>
                             <label for="payment_card_cvv">CVV</label>
                             <input type="text" class="text-input" id="payment_card_cvv" name="payment_card_cvv" required
-                                placeholder="000" value="222" min="100" max="999">
+                                placeholder="000"  min="100" max="999">
                         </fieldset>
                         <fieldset>
                             <label for="payment_card_expiry_month">Expiry</label>
                             <div class="icon-frame">
                                 <input type="text" class="text-input" id="payment_card_expiry_month"
-                                    name="payment_card_expiry_month" required placeholder="Month" value="22" min="1"
+                                    name="payment_card_expiry_month" required placeholder="Month"  min="1"
                                     max="12">
 
                                 <input type="text" class="text-input" id="payment_card_expiry_year"
-                                    name="payment_card_expiry_year" required placeholder="Year" value="2022" min="2024"
+                                    name="payment_card_expiry_year" required placeholder="Year"  min="2024"
                                     max="2050">
                             </div>
                         </fieldset>
+
+                        <fieldset aria-hidden="true"><input type="hidden" id="ticket_price_input" name="ticket_price_input"></fieldset>
                     </div>
 
                     <div class="btn-box">
-                        <button class="primary">Confirm Payment</button>
+                        <button class="primary" id="confirm_payment_btn">Confirm Payment</button>
                     </div>
                 </div>
 
