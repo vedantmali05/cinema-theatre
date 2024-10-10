@@ -96,17 +96,17 @@ def payment(request):
 
         
         # TODO:uncomment this after completing all work
-        # Ticket.objects.create(
-        #     movie_id=1234,  
-        #     show_date=show_date,
-        #     show_time=show_time,
-        #     movie_language=language,
-        #     location_selected=location,
-        #     seats_selected=seats,  
-        #     ticket_price=100,  
-        #     name=name,
-        #     card_number=card_number
-        # )
+        Ticket.objects.create(
+            movie_id=1234,  
+            show_date=show_date,
+            show_time=show_time,
+            movie_language=language,
+            location_selected=location,
+            seats_selected=seats,  
+            ticket_price=100,  
+            name=name,
+            card_number=card_number
+        )
 
         
         params = {
