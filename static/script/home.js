@@ -15,11 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
             saveToStorage("current_movie", []);
             MOVIE_LIST.forEach((movie) => {
                 const banner = document.createElement('div');
-                banner.classList.add('swiper-slide');
+                banner.classList.add('cinema-banner');
 
                 // Create cinema banner structure
                 banner.innerHTML = `
-        <div class="cinema-banner">
             <!-- Movie Poster -->
             <picture class="poster">
                 <img src="/static/assets/${movie.poster}" alt="${movie.name} movie poster">
@@ -74,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </section>
             </section>
             <!-- Contents ENDS -->
-            </div>
     `;
 
                 // Append the banner to the container
